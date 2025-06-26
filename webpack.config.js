@@ -10,6 +10,10 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     clean:true
   },
+  devtool: "eval-source-map",
+  devServer: {
+    watchFiles: ["./src/template.html"],
+  },
   plugins:[
     new HtmlWebpackPlugin({
         hash: true,
@@ -38,6 +42,10 @@ module.exports = {
       {
         test: /\.html$/i,
         loader: "html-loader",
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
